@@ -11,11 +11,11 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    overflow: hidden;
     margin: 0;
-    background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80');
     background-position: center center;
     background-size: cover;
-    transition: 0.4s ease;
+    transition: 0.4s;
 }
 
 body::before {
@@ -53,7 +53,6 @@ body::before {
 .slide.active {
     opacity: 1;
 }
-
 
 .arrow {
     position: fixed;
