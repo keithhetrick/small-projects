@@ -112,20 +112,6 @@ function toggleButton() {
   button.disabled = !button.disabled;
 }
 
-// function test() {
-//   VoiceRSS.speech({
-//     key: "015715fd97ad44a991e3c820a9a2b504",
-//     src: "Hello, world!",
-//     hl: "en-us",
-//     v: "Linda",
-//     r: 0,
-//     c: "mp3",
-//     f: "44khz_16bit_stereo",
-//     ssml: false,
-//   });
-// }
-// test();
-
 // Passing Joke to VoiceRSS Api
 function tellMe(joke) {
   console.log("tell me:", joke);
@@ -142,7 +128,6 @@ function tellMe(joke) {
 }
 
 // Get Jokes from Joke API
-
 async function getJokes() {
   let joke = "";
   const apiUrl =
@@ -167,5 +152,3 @@ async function getJokes() {
 // Event Listeners
 button.addEventListener("click", getJokes);
 audioElement.addEventListener("ended", toggleButton);
-
-// getJokes();
