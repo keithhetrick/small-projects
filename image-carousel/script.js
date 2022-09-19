@@ -1,41 +1,191 @@
-const imgs = document.getElementById("imgs");
-const leftBtn = document.getElementById("left");
-const rightBtn = document.getElementById("right");
+<tr className="column-divider">
+              {/* To Do - Regular Service */}
+              <DragDropContext onDropEnd={(result) => console.log(result)}>
+                <Droppable droppableId="tasks">
+                  {(provided) => (
+                    <td
+                      className="column-wall"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      (Expedited Service)
+                      {tasks
+                        .filter(
+                    (task) =>
+                      task.state === "To-Do" && task.service === "Regular"
+                  )
+                        .map((task, index) => {
+                          return (
+                            <Draggable
+                              key={task._id}
+                              draggableId={task._id}
+                              index={index}
+                            >
+                              {(provided, snapshot) => (
+                                <div
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  className="task"
+                                >
+                                  <Link
+                                    className="no-underline"
+                                    to={`/task/${task._id}`}
+                                  >
+                                    <div className={`${task.color} task-card`}>
+                                      {task.name}
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      {provided.placeholder}
+                    </td>
+                  )}
+                </Droppable>
+              </DragDropContext>
+              
+              {/* Do Today - Regular Service */}
+              <DragDropContext onDropEnd={(result) => console.log(result)}>
+                <Droppable droppableId="task">
+                  {(provided) => (
+                    <td
+                      className="column-wall"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      {tasks
+                        .filter(
+                    (task) =>
+                      task.state === "Do Today" && task.service === "Regular"
+                  )
+                        .map((task, index) => {
+                          return (
+                            <Draggable
+                              key={index}
+                              draggableId={task._id}
+                              index={index}
+                            >
+                              {(provided) => (
+                                <div
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  ref={provided.innerRef}
+                                  className="task"
+                                >
+                                  <Link
+                                    className="no-underline"
+                                    to={`/task/${task._id}`}
+                                  >
+                                    <div className={`${task.color} task-card`}>
+                                      {task.name}
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      {provided.placeholder}
+                    </td>
+                  )}
+                </Droppable>
+              </DragDropContext>
 
-const img = document.querySelectorAll("#imgs img");
+              {/* In Progress - Regular Service */}
+              <DragDropContext onDropEnd={(result) => console.log(result)}>
+                <Droppable droppableId="task">
+                  {(provided) => (
+                    <td
+                      className="column-wall"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      {tasks
+                        .filter(
+                    (task) =>
+                      task.state === "In-Progress" && task.service === "Regular"
+                  )
 
-let index = 0;
+                        .map((task, index) => {
+                          return (
+                            <Draggable
+                              key={index}
+                              draggableId={task._id}
+                              index={index}
+                            >
+                              {(provided) => (
+                                <div
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  ref={provided.innerRef}
+                                  className="task"
+                                >
+                                  <Link
+                                    className="no-underline"
+                                    to={`/task/${task._id}`}
+                                  >
+                                    <div className={`${task.color} task-card`}>
+                                      {task.name}
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      {provided.placeholder}
+                    </td>
+                  )}
+                </Droppable>
+              </DragDropContext>
 
-let interval = setInterval(run, 3500);
-
-function run() {
-  index++;
-
-  changeImage();
-}
-
-function changeImage() {
-  if (index > img.length - 1) {
-    index = 0;
-  } else if (index < 0) {
-    index = img.length - 1;
-  }
-  imgs.style.transform = `translateX(${-index * 500}px)`;
-}
-
-function resetInterval() {
-  clearInterval(interval);
-  interval = setInterval(run, 3500);
-}
-
-rightBtn.addEventListener("click", () => {
-  index++;
-  changeImage();
-  resetInterval();
-});
-
-leftBtn.addEventListener("click", () => {
-  index--;
-  changeImage();
-  resetInterval();
-});
+              {/* Done - Regular Service */}
+              <DragDropContext onDropEnd={(result) => console.log(result)}>
+                <Droppable droppableId="task">
+                  {(provided) => (
+                    <td
+                      className="column-wall"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      {tasks
+                        .filter(
+                    (task) =>
+                      task.state === "Done" && task.service === "Regular"
+                  )
+                        .map((task, index) => {
+                          return (
+                            <Draggable
+                              key={index}
+                              draggableId={task._id}
+                              index={index}
+                            >
+                              {(provided) => (
+                                <div
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  ref={provided.innerRef}
+                                  className="task"
+                                >
+                                  <Link
+                                    className="no-underline"
+                                    to={`/task/${task._id}`}
+                                  >
+                                    <div className={`${task.color} task-card`}>
+                                      {task.name}
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      {provided.placeholder}
+                    </td>
+                  )}
+                </Droppable>
+              </DragDropContext>
+            </tr>
