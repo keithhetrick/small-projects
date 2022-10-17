@@ -9,7 +9,7 @@ let awaitingNextValue = false;
 let tipsValue = 0;
 
 function sendNumberValue(number) {
-  // Replace current display value iif first value is entered
+  // Replace current display value if first value is entered
   if (awaitingNextValue) {
     calculatorDisplay.textContent = number;
     awaitingNextValue = false;
